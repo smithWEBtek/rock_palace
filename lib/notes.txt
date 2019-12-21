@@ -1,0 +1,61 @@
+Scenario: 
+
+Our customer, a music venue called Rock Palace, that has hired us to build an event calendar. The first sprint is complete and accomplished the following:
+
+Added basic “Event” model, controller and index, show, new, create, edit and update functionality. 
+Added Rspec and factory_bot for testing.
+Bootstrap, jquery-rails, and simple_form gems were added and implemented.
+The will_paginate gem was added but there was not time to implement it.
+The haml gem was added but not all erb files have been modied to haml.
+In lieu of a full fledged authentication system like devise, a simple HTTP Digest Authentication has been implemented for new/create/edit/update actions.
+
+You are taking over for the next sprint and have the following tasks. BDD techniques should be used to ensure test coverage:
+
+
+[] Events#index list should be paginated.
+[] The will_paginate gem is already in Gemfile.
+[] No more than 5 events per page.
+[] The events listed in events#index should only show upcoming events.
+[] Currently it displays any and all events.
+[] To make the logic reusable and unit testable, use a scope.
+[] The events listed in events#index should list the events in ascending order by the Event ‘when’ attribute.
+[] In other words, the event occuring soonest should be at the top.
+[] This should also be reusable and unit-testable so make it a scope.
+[] Haml was added to the Gemfile mid-way through the previous sprint and not all views were converted from erb.
+[] Ensure that all views are changed from erb to haml.
+[] The Event ‘when’ attribute is a datetime datatype.
+[] It should be displayed, in views, in a user friendly format like “12/31/2019 at 8PM” using an existing Ruby method available to date objects.
+[] Flash[:notice] messages are implemented in the controller actions but are not being rendered.
+[] Ensure they they are visible by adding them to the layout and replace stubbed out acceptance tests (see “xit” tests).
+
+
+
+
+Clone the repository from Github:
+https://github.com/tomvleonard/rock_palace
+
+When completed, zip the code and email it to thomas_leonard@dfci.harvard.edu. Also, feel free to email me questions if anything is unclear. If you get hung up on anything, go ahead and note the issues you encountered and move on.
+
+
+Events#index list should be paginated. The will_paginate gem is already in Gemfile. No more than 5 events per page.
+The events listed in events#index should only show upcoming events. Currently it displays any and all events. To make the logic reusable and unit testable, use a scope.
+The events listed in events#index should list the events in ascending order by the Event ‘when’ attribute. In other words, the event occuring soonest should be at the top. This should also be reusable and unit-testable so make it a scope.
+Haml was added to the Gemfile mid-way through the previous sprint and not all views were converted from erb. Ensure that all views are changed from erb to haml.
+The Event ‘when’ attribute is a datetime datatype. It should be displayed, in views, in a user friendly format like “12/31/2019 at 8PM” using an existing Ruby method available to date objects.
+Flash[:notice] messages are implemented in the controller actions but are not being rendered. Ensure they they are visible by adding them to the layout and replace stubbed out acceptance tests (see “xit” tests).
+
+README updates: 
+
+- Installed Ruby version 2.6.4 with RVM
+- Added user: 'brad' in application_controller, USERS object
+- Added seed data created from `https://mockaroo.com/`
+- Added rake task to import CSV seed data
+- Added rake task to reset Events table (and remove CSV seed data)
+- Add HAML extension to VSCODE for syntax highlighting
+- Checked for reserved word (column name in the database: 'when'), on https://reservedwords.herokuapp.com/
+- Added 'content' column to the table of Events on the Index view page
+- Implement will_paginate on Events Index view, (and also in the Event model, which is redundant redundant :-), just demonstrating that there are multiple ways to implement the 5 Event limit)
+- Add minor styling to Index page and will_paginate navigation
+- Implement sorting in Events controller, index action
+- Add pry gem
+
