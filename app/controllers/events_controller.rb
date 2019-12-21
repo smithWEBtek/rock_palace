@@ -3,7 +3,12 @@ class EventsController < ApplicationController
   before_action :authenticate, only: [ :new, :create, :edit, :update ]
 
   def index
-    @events = Event.all
+    if params[:page] == ''
+      # @events = Event.order(when: asc)
+      @events = Event.where('when > ?', DateTime.current).order(when: :asc)
+    else
+      @events = Event.paginate(:page => params[:page], :per_page => 5).order(:when)
+    end
   end
 
   def show
