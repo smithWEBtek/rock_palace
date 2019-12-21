@@ -1,13 +1,22 @@
 %h1 Rock Palace Calendar
 
-= link_to 'New Event', new_event_path
+= link_to 'New Event', new_event_path 
 
 %table
   %thead
     %th Performer
     %th When
+    %th Content
   %tbody
     - @events.each do |event|
       %tr
         %td= link_to event.performer, event
-        %td= event.when
+        %td= event.when.strftime("%m/%d/%Y at %I:%M%p")
+        %td= event.content
+
+%hr
+%div.nav-will-paginate
+  %h4 Navigate Events
+  %h5= link_to will_paginate @events
+%hr
+

@@ -6,14 +6,21 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
   %body
+    
     #wrap
       %nav.navbar.bg-gray
         .container
           %a.navbar-brand{ href: '/' } Rock Palace
+      
+        = flash.each do |key, value|            
+          = value
+
       #main.container
         .row
           .col-sm-12
-            = yield
+        
+        = yield
     %footer.footer.container
-      < Logout Link Placeholder >
+      %a.navbar-brand{ href: '/logout' } Log Out
