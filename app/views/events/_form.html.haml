@@ -1,10 +1,14 @@
 .fieldset
 = simple_form_for(@event, :validation => true, html: { class: 'form-inline' }) do |f|
 
-  %p= f.text_field :performer
+  %fieldset
+    %h4 performer
+    %p= f.text_field :performer
 
-  %p= f.datetime_select :when
+    %h4 date time am/pm
+    %p= f.datetime_field :when
+ 
+    %h4 content
+    %p= f.text_field :content
 
-  %p= f.text_field :content
-  
-  %p= f.button :submit
+    %p= f.button :submit, value: 'submit new event', class: 'submit-button'
