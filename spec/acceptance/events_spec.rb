@@ -13,12 +13,6 @@ RSpec.describe 'Events' do
     end
 
     it 'past events are not displayed' do
-      puts "**********************************************"
-      puts "DateTime.current and Date.today are not the same!"
-      puts "DateTime.current: #{DateTime.current}"
-      puts "Date.today: #{Date.today}"
-      puts "@past_event.when #{@past_event.when}"
-      puts "**********************************************"
       expect(page).to have_no_content(@past_event.performer)
     end
     
