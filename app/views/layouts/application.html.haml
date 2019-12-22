@@ -13,14 +13,14 @@
       %nav.navbar.bg-gray
         .container
           %a.navbar-brand{ href: '/' } Rock Palace
-      
+        %div.navlinks= render partial: 'layouts/navbar'
+
       -if flash['status'] == 'success'
         %div.success= flash['notice']
 
       -if flash['status'] == 'alert'
         %div.alert= flash['notice']
-
-
+    
 
       #main.container
         .row

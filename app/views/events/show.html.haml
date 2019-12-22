@@ -1,5 +1,5 @@
-%h1= @event.performer
-%h2= @event.when.strftime("%m/%d/%Y at %I:%M%p")
+%h2= @event.performer
+%h3= @event.when.strftime("%m/%d/%Y at %I:%M%p")
 %p= @event.content
 
 %a= link_to 'Edit Event', edit_event_path(@event)

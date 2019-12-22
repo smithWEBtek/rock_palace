@@ -5,6 +5,8 @@ class EventsController < ApplicationController
   def index
     if params[:oldest]
       @events = Event.oldest_first.paginate(:page => params[:page], :per_page => 5)
+    elsif params[:all]
+      @events = Event.all.order(:performer)
     else
       @events = Event.newest_first.merge(Event.future).paginate(:page => params[:page], :per_page => 5)
     end

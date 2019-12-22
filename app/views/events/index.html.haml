@@ -1,14 +1,9 @@
-%h1 Rock Palace Calendar
-
-= link_to 'Sort Ascending  |  ', '/events'
-= link_to 'Sort Descending |  ', '/events?oldest=true'
-= link_to 'New Event', new_event_path
-
+%h2 Rock Palace Calendar
 %hr
 
 %table
   %thead
-    %th Performer
+    %th{:class => "event-performer", :id => "message"} Performer
     %th When
     %th Content
   %tbody
@@ -17,10 +12,10 @@
         %td= link_to event.performer, event
         %td= event.when.strftime("%m/%d/%Y at %I:%M%p")
         %td= event.content
-
 %hr
-%div.nav-will-paginate
+%nav.will-paginate
   %h5 Navigate Events
-  %h5= link_to will_paginate @events
+  -if @events.count <= 5
+    %h5= link_to will_paginate @events
 %hr
 

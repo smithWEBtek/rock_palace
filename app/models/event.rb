@@ -9,7 +9,7 @@ class Event < ApplicationRecord
 
   def self.future_events
     self.all.select do |event|
-      event.when >= Date.today
+      event.when >= DateTime.current
     end
   end
 

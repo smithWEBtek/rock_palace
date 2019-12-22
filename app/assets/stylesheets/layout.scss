@@ -1,5 +1,6 @@
 // Push footer to bottom
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -8,8 +9,8 @@ html, body {
 }
 
 #main {
-  overflow:auto;
-  padding-bottom:150px; /* this needs to be bigger than footer height*/
+  overflow: auto;
+  padding-bottom: 4rem; /* this needs to be bigger than footer height*/
 }
 
 nav.bg-gray {
@@ -20,17 +21,21 @@ nav.bg-gray {
   background-color: #c1c1c1;
 }
 
-.nav-will-paginate {
+nav.will-paginate {
   background-color: #e2e2e2;
   margin-top: 2rem;
 
   a {
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
   }
 }
 
+.event-performer {
+  width: 20rem;
+}
+
 td {
-  padding: .5rem .5rem .5rem 0;
+  padding: 0 15px 5px 0;
 }
 
 .submit-button {
@@ -47,4 +52,19 @@ td {
 .alert {
   color: red;
   font-weight: bold;
+}
+
+.navlinks {
+  margin: auto;
+  width: 80%;
+  a {
+    color: rgb(6, 51, 23);
+    font-size: medium;
+    font-weight: bold;
+    padding-right: 2rem;
+  }
+
+  a:hover {
+    background-color: rgb(117, 206, 154);
+  }
 }

@@ -6,7 +6,7 @@
     %p= f.text_field :performer
 
     %h4 date time am/pm
-    %p= f.datetime_field :when
+    %p= f.datetime_field :when, default: DateTime.current
  
     %h4 content
     %p= f.text_field :content

@@ -12,19 +12,29 @@ RSpec.describe 'Events' do
       visit events_path
     end
 
-    xit 'add test that ensures that past events are not displayed'
-
-    xit 'add test that ensure that only 10 events are listed per page'
+    it 'past events are not displayed' do
+      puts "**********************************************"
+      puts "DateTime.current and Date.today are not the same!"
+      puts "DateTime.current: #{DateTime.current}"
+      puts "Date.today: #{Date.today}"
+      puts "@past_event.when #{@past_event.when}"
+      puts "**********************************************"
+      expect(page).to have_no_content(@past_event.performer)
+    end
+    
+    it 'only 5 events are listed per page' do
+      expect(page).to have_selector('tr', count: 5)
+    end
 
     it 'displays all event performers' do
-      @events[0..9].each do |event|
+      @events[0..4].each do |event|
         expect(page).to have_content(event.performer)
       end
     end
 
     it 'displays all event whens (dates)' do
-      @events[0..9].each do |event|
-        expect(page).to have_content(event.when)
+      @events[0..4].each do |event|
+        expect(page).to have_content(event.when.strftime("%m/%d/%Y at %I:%M%p"))
       end
     end
   end
@@ -41,7 +51,7 @@ RSpec.describe 'Events' do
     end
 
     it 'should display when' do
-      expect(page).to have_content(@event.when)
+      expect(page).to have_content(@event.when.strftime("%m/%d/%Y at %I:%M%p"))
     end
 
     it 'should display content' do
@@ -58,6 +68,7 @@ RSpec.describe 'Events' do
       before do
         fill_in 'event_performer', with: 'The XYZs'
         # date controls are preset with current date
+        fill_in 'event_when', with: DateTime.current
         fill_in 'event_content', with: 'This is some content.'
       end
 
@@ -69,8 +80,11 @@ RSpec.describe 'Events' do
         click_on 'Create Event'
         expect(current_path).to eq event_path(Event.last)
       end
-
-      xit 'add test for displaying success flash notice'
+      
+      it 'add test for displaying success flash notice' do
+        click_on 'Create Event'
+        expect(page).to have_content("Successfully created event.")
+      end
     end
 
     context 'given that the input values are invalid' do
@@ -88,7 +102,10 @@ RSpec.describe 'Events' do
         expect(current_path).to eq new_event_path
       end
 
-      xit 'add test for displaying error flash notice'
+      it 'displays error flash notice' do
+        click_on 'Create Event'
+        expect(page).to have_content("Unable to create event due to errors. Please review.")
+      end
     end
   end
 
@@ -112,8 +129,9 @@ RSpec.describe 'Events' do
         expect(current_path).to eq event_path(@event)
       end
 
-      xit 'add test for displaying success flash notice'
-
+      it 'displays success flash notice' do
+        expect(page).to have_content('Successfully updated event.')
+      end
     end
 
     context 'given that the input values are invalid' do
@@ -127,8 +145,9 @@ RSpec.describe 'Events' do
         expect(@event.reload.content).to eq @content
       end
 
-      xit 'add test for displaying success flash notice'
-
+      it 'displays failure flash notice' do
+        expect(page).to have_content("Unable to update event due to errors. Please review.")
+      end
     end
   end
 end
