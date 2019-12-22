@@ -14,8 +14,13 @@
         .container
           %a.navbar-brand{ href: '/' } Rock Palace
       
-        = flash.each do |key, value|            
-          = value
+      -if flash['status'] == 'success'
+        %div.success= flash['notice']
+
+      -if flash['status'] == 'alert'
+        %div.alert= flash['notice']
+
+
 
       #main.container
         .row

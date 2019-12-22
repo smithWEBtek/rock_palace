@@ -1,5 +1,5 @@
 .fieldset
-= simple_form_for(@event, :validation => true, html: { class: 'form-inline' }) do |f|
+= simple_form_for(@event, :validation => true, :required => true, html: { class: 'form-inline' }) do |f|
 
   %fieldset
     %h4 performer
@@ -11,4 +11,4 @@
     %h4 content
     %p= f.text_field :content
 
-    %p= f.button :submit, value: 'submit new event', class: 'submit-button'
+    %p= f.button :submit, class: 'submit-button'

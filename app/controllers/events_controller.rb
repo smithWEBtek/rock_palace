@@ -22,24 +22,28 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       flash[:notice] = 'Successfully created event.'
+      flash[:status] = 'success'
       redirect_to event_path(@event)
     else
-      flash[:notice] = 'Unable to create event due to errors. Please review.'
+      flash[:notice] = "Unable to create event due to errors. Please review." + "\n #{@event.errors.full_messages}"
+      flash[:status] = 'alert'
       render :new
     end
   end
-
+  
   def edit
     @event = Event.find(params[:id])
   end
-
+  
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
       flash[:notice] = 'Successfully updated event.'
+      flash[:status] = 'success'
       redirect_to event_path(@event)
     else
-      flash[:notice] = 'Unable to update event due to errors. Please review.'
+      flash[:notice] = "Unable to update event due to errors. Please review." + "\n #{@event.errors.full_messages}"
+      flash[:status] = 'alert'
       render :edit
     end
   end
