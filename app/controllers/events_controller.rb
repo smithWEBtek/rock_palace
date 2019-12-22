@@ -1,13 +1,12 @@
 class EventsController < ApplicationController
-
   before_action :authenticate, only: [ :new, :create, :edit, :update ]
+  require 'will_paginate/array'
 
   def index
-    if params[:page] == ''
-      # @events = Event.order(when: asc)
-      @events = Event.where('when > ?', DateTime.current).order(when: :asc)
+    if params[:oldest]
+      @events = Event.oldest_first.paginate(:page => params[:page], :per_page => 5)
     else
-      @events = Event.paginate(:page => params[:page], :per_page => 5).order(:when)
+      @events = Event.newest_first.merge(Event.future).paginate(:page => params[:page], :per_page => 5)
     end
   end
 

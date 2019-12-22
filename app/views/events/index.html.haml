@@ -1,6 +1,10 @@
 %h1 Rock Palace Calendar
 
-= link_to 'New Event', new_event_path 
+= link_to 'Sort Ascending  |  ', '/events'
+= link_to 'Sort Descending |  ', '/events?oldest=true'
+= link_to 'New Event', new_event_path
+
+%hr
 
 %table
   %thead
@@ -16,7 +20,7 @@
 
 %hr
 %div.nav-will-paginate
-  %h4 Navigate Events
+  %h5 Navigate Events
   %h5= link_to will_paginate @events
 %hr
 

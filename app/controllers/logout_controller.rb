@@ -1,8 +1,8 @@
 class LogoutController < ApplicationController
 
   def index
-    # TODO: clear authentication from session cookie
-    # and redirect back to landing page
+    session.delete(:session_id)
+    redirect_to root_path
   end
 
 end
