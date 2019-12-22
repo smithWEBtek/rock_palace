@@ -12,9 +12,9 @@ In lieu of a full fledged authentication system like devise, a simple HTTP Diges
 You are taking over for the next sprint and have the following tasks. BDD techniques should be used to ensure test coverage:
 
 
-[] Events#index list should be paginated.
-[] The will_paginate gem is already in Gemfile.
-[] No more than 5 events per page.
+[x] Events#index list should be paginated.
+[x] The will_paginate gem is already in Gemfile.
+[x] No more than 5 events per page.
 [] The events listed in events#index should only show upcoming events.
 [] Currently it displays any and all events.
 [] To make the logic reusable and unit testable, use a scope.
